@@ -166,10 +166,11 @@ class ControllerUserUserPermission extends Controller {
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
 		);
+                
+                $checkOnewoorkAdmin = ($this->session->data['user_id']==1) ? false : true;
+		$user_group_total = $this->model_user_user_group->getTotalUserGroups($checkOnewoorkAdmin);
 
-		$user_group_total = $this->model_user_user_group->getTotalUserGroups();
-
-		$results = $this->model_user_user_group->getUserGroups($filter_data);
+		$results = $this->model_user_user_group->getUserGroups($filter_data, $checkOnewoorkAdmin);
 
 		foreach ($results as $result) {
 			$data['user_groups'][] = array(

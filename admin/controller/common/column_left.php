@@ -36,6 +36,7 @@ class ControllerCommonColumnLeft extends Controller {
 			$data['menus'][] = array(
 				'id'       => 'menu-dashboard',
 				'icon'	   => 'fa-dashboard',
+                                'class'    =>  '',
 				'name'	   => $this->language->get('text_dashboard'),
 				'href'     => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true),
 				'children' => array()
@@ -200,6 +201,7 @@ class ControllerCommonColumnLeft extends Controller {
 			if ($extension) {					
 				$data['menus'][] = array(
 					'id'       => 'menu-extension',
+                                        'class'    => '',
 					'icon'	   => 'fa-puzzle-piece', 
 					'name'	   => $this->language->get('text_extension'),
 					'href'     => '',

@@ -40,8 +40,9 @@ class ControllerExtensionExtension extends Controller {
 		$files = glob(DIR_APPLICATION . 'controller/extension/extension/*.php', GLOB_BRACE);
 		
 		foreach ($files as $file) {
+                        
 			$extension = basename($file, '.php');
-			
+			if($this->session->data['user_id']!=1 && $extension != 'module' ):
 			// Compatibility code for old extension folders
 			$this->load->language('extension/extension/' . $extension);
 		
@@ -54,6 +55,7 @@ class ControllerExtensionExtension extends Controller {
 					'href' => $this->url->link('extension/extension/' . $extension, 'token=' . $this->session->data['token'], true)
 				);
 			}			
+                        endif;
 		}
 		
 		$data['header'] = $this->load->controller('common/header');
