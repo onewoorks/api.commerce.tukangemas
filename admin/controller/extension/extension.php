@@ -42,7 +42,7 @@ class ControllerExtensionExtension extends Controller {
 		foreach ($files as $file) {
                         
 			$extension = basename($file, '.php');
-			if($this->session->data['user_id']!=1 && $extension != 'module' ):
+			if($this->session->data['user_id']==1 && $extension != 'module' ):
 			// Compatibility code for old extension folders
 			$this->load->language('extension/extension/' . $extension);
 		

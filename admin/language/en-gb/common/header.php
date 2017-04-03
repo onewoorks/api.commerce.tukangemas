@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']          = 'Onewoorks Online Store Administration';
+$_['heading_title']          = ' | Online Store Administration';
 
 // Text
 $_['text_order']             = 'Orders';

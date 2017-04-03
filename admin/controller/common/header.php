@@ -1,13 +1,20 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
-		$data['title'] = $this->document->getTitle();
+		
 
 		if ($this->request->server['HTTPS']) {
 			$data['base'] = HTTPS_SERVER;
 		} else {
 			$data['base'] = HTTP_SERVER;
 		}
+                
+                $this->load->model('setting/setting');
+                
+                $vv = $this->model_setting_setting->getSetting('config',0);
+                
+                $data['title'] = $vv['config_name']. ' | ' . $this->document->getTitle();
+                $data['admin_store_name'] = $vv['config_name'];
 
 		$data['description'] = $this->document->getDescription();
 		$data['keywords'] = $this->document->getKeywords();

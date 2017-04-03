@@ -94,247 +94,287 @@
                 <?php } ?>
               </div>
             </div>
-            <div class="tab-pane" id="tab-data">
-                <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
-                  <div id="product-category" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_categories as $product_category) { ?>
-                    <div id="product-category<?php echo $product_category['category_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_category['name']; ?>
-                      <input type="hidden" name="product_category[]" value="<?php echo $product_category['category_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
-                
-              <div class="form-group form-group-sm required">
-                <label class="col-sm-3 control-label" for="input-model"><?php echo $entry_model; ?></label>
-                <div class="col-sm-5">
-                  <input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
-                  <?php if ($error_model) { ?>
-                  <div class="text-danger"><?php echo $error_model; ?></div>
-                  <?php } ?>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-sku"><span data-toggle="tooltip" title="<?php echo $help_sku; ?>"><?php echo $entry_sku; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="sku" value="<?php echo $sku; ?>" placeholder="<?php echo $entry_sku; ?>" id="input-sku" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm hidden">
-                <label class="col-sm-3 control-label" for="input-upc"><span data-toggle="tooltip" title="<?php echo $help_upc; ?>"><?php echo $entry_upc; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="upc" value="<?php echo $upc; ?>" placeholder="<?php echo $entry_upc; ?>" id="input-upc" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm hidden">
-                <label class="col-sm-3 control-label" for="input-ean"><span data-toggle="tooltip" title="<?php echo $help_ean; ?>"><?php echo $entry_ean; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="ean" value="<?php echo $ean; ?>" placeholder="<?php echo $entry_ean; ?>" id="input-ean" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm hidden">
-                <label class="col-sm-3 control-label" for="input-jan"><span data-toggle="tooltip" title="<?php echo $help_jan; ?>"><?php echo $entry_jan; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="jan" value="<?php echo $jan; ?>" placeholder="<?php echo $entry_jan; ?>" id="input-jan" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm hidden">
-                <label class="col-sm-3 control-label" for="input-isbn"><span data-toggle="tooltip" title="<?php echo $help_isbn; ?>"><?php echo $entry_isbn; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="isbn" value="<?php echo $isbn; ?>" placeholder="<?php echo $entry_isbn; ?>" id="input-isbn" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm hidden">
-                <label class="col-sm-3 control-label" for="input-mpn"><span data-toggle="tooltip" title="<?php echo $help_mpn; ?>"><?php echo $entry_mpn; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="mpn" value="<?php echo $mpn; ?>" placeholder="<?php echo $entry_mpn; ?>" id="input-mpn" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm hidden">
-                <label class="col-sm-3 control-label" for="input-location"><?php echo $entry_location; ?></label>
-                <div class="col-sm-5">
-                  <input type="text" name="location" value="<?php echo $location; ?>" placeholder="<?php echo $entry_location; ?>" id="input-location" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-price"><?php echo $entry_price; ?></label>
-                <div class="col-sm-5">
-                  <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
-                <div class="col-sm-5">
-                  <select name="tax_class_id" id="input-tax-class" class="form-control">
-                    <option value="0"><?php echo $text_none; ?></option>
-                    <?php foreach ($tax_classes as $tax_class) { ?>
-                    <?php if ($tax_class['tax_class_id'] == $tax_class_id) { ?>
-                    <option value="<?php echo $tax_class['tax_class_id']; ?>" selected="selected"><?php echo $tax_class['title']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $tax_class['tax_class_id']; ?>"><?php echo $tax_class['title']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
-                <div class="col-sm-5">
-                  <input type="text" name="quantity" value="<?php echo $quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-minimum"><span data-toggle="tooltip" title="<?php echo $help_minimum; ?>"><?php echo $entry_minimum; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="minimum" value="<?php echo $minimum; ?>" placeholder="<?php echo $entry_minimum; ?>" id="input-minimum" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-subtract"><?php echo $entry_subtract; ?></label>
-                <div class="col-sm-5">
-                  <select name="subtract" id="input-subtract" class="form-control">
-                    <?php if ($subtract) { ?>
-                    <option value="1" selected="selected"><?php echo $text_yes; ?></option>
-                    <option value="0"><?php echo $text_no; ?></option>
-                    <?php } else { ?>
-                    <option value="1"><?php echo $text_yes; ?></option>
-                    <option value="0" selected="selected"><?php echo $text_no; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-stock-status"><span data-toggle="tooltip" title="<?php echo $help_stock_status; ?>"><?php echo $entry_stock_status; ?></span></label>
-                <div class="col-sm-5">
-                  <select name="stock_status_id" id="input-stock-status" class="form-control">
-                    <?php foreach ($stock_statuses as $stock_status) { ?>
-                    <?php if ($stock_status['stock_status_id'] == $stock_status_id) { ?>
-                    <option value="<?php echo $stock_status['stock_status_id']; ?>" selected="selected"><?php echo $stock_status['name']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $stock_status['stock_status_id']; ?>"><?php echo $stock_status['name']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label"><?php echo $entry_shipping; ?></label>
-                <div class="col-sm-5">
-                  <label class="radio-inline">
-                    <?php if ($shipping) { ?>
-                    <input type="radio" name="shipping" value="1" checked="checked" />
-                    <?php echo $text_yes; ?>
-                    <?php } else { ?>
-                    <input type="radio" name="shipping" value="1" />
-                    <?php echo $text_yes; ?>
-                    <?php } ?>
-                  </label>
-                  <label class="radio-inline">
-                    <?php if (!$shipping) { ?>
-                    <input type="radio" name="shipping" value="0" checked="checked" />
-                    <?php echo $text_no; ?>
-                    <?php } else { ?>
-                    <input type="radio" name="shipping" value="0" />
-                    <?php echo $text_no; ?>
-                    <?php } ?>
-                  </label>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
-                <div class="col-sm-5">
-                  <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
-                  <?php if ($error_keyword) { ?>
-                  <div class="text-danger"><?php echo $error_keyword; ?></div>
-                  <?php } ?>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-date-available"><?php echo $entry_date_available; ?></label>
-                <div class="col-sm-3">
-                  <div class="input-group date">
-                    <input type="text" name="date_available" value="<?php echo $date_available; ?>" placeholder="<?php echo $entry_date_available; ?>" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control" />
-                    <span class="input-group-btn">
-                    <button class="btn btn-default btn-sm" type="button"><i class="fa fa-calendar"></i></button>
-                    </span></div>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-length"><?php echo $entry_dimension; ?></label>
-                <div class="col-sm-5">
+              <div class="tab-pane" id="tab-data">
                   <div class="row">
-                    <div class="col-sm-3">
-                      <input type="text" name="length" value="<?php echo $length; ?>" placeholder="<?php echo $entry_length; ?>" id="input-length" class="form-control" />
-                    </div>
-                    <div class="col-sm-3">
-                      <input type="text" name="width" value="<?php echo $width; ?>" placeholder="<?php echo $entry_width; ?>" id="input-width" class="form-control" />
-                    </div>
-                    <div class="col-sm-3">
-                      <input type="text" name="height" value="<?php echo $height; ?>" placeholder="<?php echo $entry_height; ?>" id="input-height" class="form-control" />
-                    </div>
+                      <div class="col-sm-4">
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-3 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
+                              <div class="col-sm-9">
+                                  <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
+                                  <div id="product-category" class="well well-sm" style="height: 150px; overflow: auto;">
+                                      <?php foreach ($product_categories as $product_category) { ?>
+                                      <div id="product-category<?php echo $product_category['category_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_category['name']; ?>
+                                          <input type="hidden" name="product_category[]" value="<?php echo $product_category['category_id']; ?>" />
+                                      </div>
+                                      <?php } ?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-2">
+                          <div class="form-group form-group-sm required">
+                              <label class="col-sm-5 control-label" for="input-model"><?php echo $entry_model; ?></label>
+                              <div class="col-sm-7">
+                                  <input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
+                                  <?php if ($error_model) { ?>
+                                  <div class="text-danger"><?php echo $error_model; ?></div>
+                                  <?php } ?>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-sku"><span data-toggle="tooltip" title="<?php echo $help_sku; ?>"><?php echo $entry_sku; ?></span></label>
+                              <div class="col-sm-7">
+                                  <input type="text" name="sku" value="<?php echo $sku; ?>" placeholder="<?php echo $entry_sku; ?>" id="input-sku" class="form-control" />
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm hidden">
+                              <label class="col-sm-5 control-label" for="input-upc"><span data-toggle="tooltip" title="<?php echo $help_upc; ?>"><?php echo $entry_upc; ?></span></label>
+                              <div class="col-sm-7">
+                                  <input type="text" name="upc" value="<?php echo $upc; ?>" placeholder="<?php echo $entry_upc; ?>" id="input-upc" class="form-control" />
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm hidden">
+                              <label class="col-sm-5 control-label" for="input-ean"><span data-toggle="tooltip" title="<?php echo $help_ean; ?>"><?php echo $entry_ean; ?></span></label>
+                              <div class="col-sm-7">
+                                  <input type="text" name="ean" value="<?php echo $ean; ?>" placeholder="<?php echo $entry_ean; ?>" id="input-ean" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm hidden">
+                              <label class="col-sm-5 control-label" for="input-jan"><span data-toggle="tooltip" title="<?php echo $help_jan; ?>"><?php echo $entry_jan; ?></span></label>
+                              <div class="col-sm-7">
+                                  <input type="text" name="jan" value="<?php echo $jan; ?>" placeholder="<?php echo $entry_jan; ?>" id="input-jan" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm hidden">
+                              <label class="col-sm-4 control-label" for="input-isbn"><span data-toggle="tooltip" title="<?php echo $help_isbn; ?>"><?php echo $entry_isbn; ?></span></label>
+                              <div class="col-sm-5">
+                                  <input type="text" name="isbn" value="<?php echo $isbn; ?>" placeholder="<?php echo $entry_isbn; ?>" id="input-isbn" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm hidden">
+                              <label class="col-sm-4 control-label" for="input-mpn"><span data-toggle="tooltip" title="<?php echo $help_mpn; ?>"><?php echo $entry_mpn; ?></span></label>
+                              <div class="col-sm-5">
+                                  <input type="text" name="mpn" value="<?php echo $mpn; ?>" placeholder="<?php echo $entry_mpn; ?>" id="input-mpn" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm hidden">
+                              <label class="col-sm-4 control-label" for="input-location"><?php echo $entry_location; ?></label>
+                              <div class="col-sm-5">
+                                  <input type="text" name="location" value="<?php echo $location; ?>" placeholder="<?php echo $entry_location; ?>" id="input-location" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-price"><?php echo $entry_price; ?></label>
+                              <div class="col-sm-7">
+                                  <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
+                              <div class="col-sm-7">
+                                  <select name="tax_class_id" id="input-tax-class" class="form-control">
+                                      <option value="0"><?php echo $text_none; ?></option>
+                                      <?php foreach ($tax_classes as $tax_class) { ?>
+                                      <?php if ($tax_class['tax_class_id'] == $tax_class_id) { ?>
+                                      <option value="<?php echo $tax_class['tax_class_id']; ?>" selected="selected"><?php echo $tax_class['title']; ?></option>
+                                      <?php } else { ?>
+                                      <option value="<?php echo $tax_class['tax_class_id']; ?>"><?php echo $tax_class['title']; ?></option>
+                                      <?php } ?>
+                                      <?php } ?>
+                                  </select>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="col-sm-3">
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-6 control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
+                              <div class="col-sm-5">
+                                  <input type="text" name="quantity" value="<?php echo $quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-6 control-label" for="input-minimum"><span data-toggle="tooltip" title="<?php echo $help_minimum; ?>"><?php echo $entry_minimum; ?></span></label>
+                              <div class="col-sm-5">
+                                  <input type="text" name="minimum" value="<?php echo $minimum; ?>" placeholder="<?php echo $entry_minimum; ?>" id="input-minimum" class="form-control" />
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-6 control-label" for="input-subtract"><?php echo $entry_subtract; ?></label>
+                              <div class="col-sm-5">
+                                  <select name="subtract" id="input-subtract" class="form-control">
+                                      <?php if ($subtract) { ?>
+                                      <option value="1" selected="selected"><?php echo $text_yes; ?></option>
+                                      <option value="0"><?php echo $text_no; ?></option>
+                                      <?php } else { ?>
+                                      <option value="1"><?php echo $text_yes; ?></option>
+                                      <option value="0" selected="selected"><?php echo $text_no; ?></option>
+                                      <?php } ?>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-6 control-label" for="input-stock-status"><span data-toggle="tooltip" title="<?php echo $help_stock_status; ?>"><?php echo $entry_stock_status; ?></span></label>
+                              <div class="col-sm-5">
+                                  <select name="stock_status_id" id="input-stock-status" class="form-control">
+                                      <?php foreach ($stock_statuses as $stock_status) { ?>
+                                      <?php if ($stock_status['stock_status_id'] == $stock_status_id) { ?>
+                                      <option value="<?php echo $stock_status['stock_status_id']; ?>" selected="selected"><?php echo $stock_status['name']; ?></option>
+                                      <?php } else { ?>
+                                      <option value="<?php echo $stock_status['stock_status_id']; ?>"><?php echo $stock_status['name']; ?></option>
+                                      <?php } ?>
+                                      <?php } ?>
+                                  </select>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-6 control-label"><?php echo $entry_shipping; ?></label>
+                              <div class="col-sm-5">
+                                  <label class="radio-inline">
+                                      <?php if ($shipping) { ?>
+                                      <input type="radio" name="shipping" value="1" checked="checked" />
+                                      <?php echo $text_yes; ?>
+                                      <?php } else { ?>
+                                      <input type="radio" name="shipping" value="1" />
+                                      <?php echo $text_yes; ?>
+                                      <?php } ?>
+                                  </label>
+                                  <label class="radio-inline">
+                                      <?php if (!$shipping) { ?>
+                                      <input type="radio" name="shipping" value="0" checked="checked" />
+                                      <?php echo $text_no; ?>
+                                      <?php } else { ?>
+                                      <input type="radio" name="shipping" value="0" />
+                                      <?php echo $text_no; ?>
+                                      <?php } ?>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-3">
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-date-available"><?php echo $entry_date_available; ?></label>
+                              <div class="col-sm-7">
+                                  <div class="input-group date">
+                                      <input type="text" name="date_available" value="<?php echo $date_available; ?>" placeholder="<?php echo $entry_date_available; ?>" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control" />
+                                      <span class="input-group-btn">
+                                          <button class="btn btn-default btn-sm" type="button"><i class="fa fa-calendar"></i></button>
+                                      </span></div>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-length"><?php echo $entry_dimension; ?></label>
+                              <div class="col-sm-7">
+                                  <div class="row ">
+                                      <div class='col-sm-12'>
+                                      <div class="col-sm-4 column-no-pad">
+                                          <input type="text" name="length" value="<?php echo $length; ?>" placeholder="<?php echo $entry_length; ?>" id="input-length" class="form-control text-center" />
+                                      </div>
+                                      <div class="col-sm-4 column-no-pad">
+                                          <input type="text" name="width" value="<?php echo $width; ?>" placeholder="<?php echo $entry_width; ?>" id="input-width" class="form-control text-center" />
+                                      </div>
+                                      <div class="col-sm-4 column-no-pad">
+                                          <input type="text" name="height" value="<?php echo $height; ?>" placeholder="<?php echo $entry_height; ?>" id="input-height" class="form-control text-center" />
+                                      </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-length-class"><?php echo $entry_length_class; ?></label>
+                              <div class="col-sm-7">
+                                  <select name="length_class_id" id="input-length-class" class="form-control">
+                                      <?php foreach ($length_classes as $length_class) { ?>
+                                      <?php if ($length_class['length_class_id'] == $length_class_id) { ?>
+                                      <option value="<?php echo $length_class['length_class_id']; ?>" selected="selected"><?php echo $length_class['title']; ?></option>
+                                      <?php } else { ?>
+                                      <option value="<?php echo $length_class['length_class_id']; ?>"><?php echo $length_class['title']; ?></option>
+                                      <?php } ?>
+                                      <?php } ?>
+                                  </select>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-weight"><?php echo $entry_weight; ?></label>
+                              <div class="col-sm-7">
+                                  <input type="text" name="weight" value="<?php echo $weight; ?>" placeholder="<?php echo $entry_weight; ?>" id="input-weight" class="form-control" />
+                              </div>
+                          </div>
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-weight-class"><?php echo $entry_weight_class; ?></label>
+                              <div class="col-sm-7">
+                                  <select name="weight_class_id" id="input-weight-class" class="form-control">
+                                      <?php foreach ($weight_classes as $weight_class) { ?>
+                                      <?php if ($weight_class['weight_class_id'] == $weight_class_id) { ?>
+                                      <option value="<?php echo $weight_class['weight_class_id']; ?>" selected="selected"><?php echo $weight_class['title']; ?></option>
+                                      <?php } else { ?>
+                                      <option value="<?php echo $weight_class['weight_class_id']; ?>"><?php echo $weight_class['title']; ?></option>
+                                      <?php } ?>
+                                      <?php } ?>
+                                  </select>
+                              </div>
+                          </div>
+
+                      </div>
                   </div>
-                </div>
+                  <hr>
+
+
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
+                              <div class="col-sm-8">
+                                  <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
+                                  <?php if ($error_keyword) { ?>
+                                  <div class="text-danger"><?php echo $error_keyword; ?></div>
+                                  <?php } ?>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="col-sm-4">
+
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-3 control-label" for="input-status"><?php echo $entry_status; ?></label>
+                              <div class="col-sm-5">
+                                  <select name="status" id="input-status" class="form-control">
+                                      <?php if ($status) { ?>
+                                      <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                      <option value="0"><?php echo $text_disabled; ?></option>
+                                      <?php } else { ?>
+                                      <option value="1"><?php echo $text_enabled; ?></option>
+                                      <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                      <?php } ?>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-2">
+                          <div class="form-group form-group-sm">
+                              <label class="col-sm-5 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+                              <div class="col-sm-5">
+                                  <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
+                              </div>
+                          </div>
+                      </div>
+
+                      
+                  </div>
               </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-length-class"><?php echo $entry_length_class; ?></label>
-                <div class="col-sm-5">
-                  <select name="length_class_id" id="input-length-class" class="form-control">
-                    <?php foreach ($length_classes as $length_class) { ?>
-                    <?php if ($length_class['length_class_id'] == $length_class_id) { ?>
-                    <option value="<?php echo $length_class['length_class_id']; ?>" selected="selected"><?php echo $length_class['title']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $length_class['length_class_id']; ?>"><?php echo $length_class['title']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-weight"><?php echo $entry_weight; ?></label>
-                <div class="col-sm-5">
-                  <input type="text" name="weight" value="<?php echo $weight; ?>" placeholder="<?php echo $entry_weight; ?>" id="input-weight" class="form-control" />
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-weight-class"><?php echo $entry_weight_class; ?></label>
-                <div class="col-sm-5">
-                  <select name="weight_class_id" id="input-weight-class" class="form-control">
-                    <?php foreach ($weight_classes as $weight_class) { ?>
-                    <?php if ($weight_class['weight_class_id'] == $weight_class_id) { ?>
-                    <option value="<?php echo $weight_class['weight_class_id']; ?>" selected="selected"><?php echo $weight_class['title']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $weight_class['weight_class_id']; ?>"><?php echo $weight_class['title']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-status"><?php echo $entry_status; ?></label>
-                <div class="col-sm-5">
-                  <select name="status" id="input-status" class="form-control">
-                    <?php if ($status) { ?>
-                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                    <option value="0"><?php echo $text_disabled; ?></option>
-                    <?php } else { ?>
-                    <option value="1"><?php echo $text_enabled; ?></option>
-                    <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group form-group-sm">
-                <label class="col-sm-3 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
-                <div class="col-sm-5">
-                  <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="tab-links">
+              <div class="tab-pane" id="tab-links">
               <div class="form-group form-group-sm">
                 <label class="col-sm-3 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
                 <div class="col-sm-5">
